@@ -1,0 +1,64 @@
+<!DOCTYPE>
+<html>
+<head>
+	<title>MEAN APP</title>
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+
+</head>
+
+<body ng-app="cApp">
+
+
+
+	<div class="container" ng-controller="UserController"> 
+    <h1>Users calling from Controller as static <h1>
+    <table  class="table" >
+    	<thead>
+    	<tr><th>Name</th><th>Email</th><th>Number</th></tr>
+        </thead>
+        <tbody>
+        	<tr ng-repeat="u in userlist" >
+        		<td>{{u.name}}</td><td>{{u.email}}</td><td>{{u.number}}</td>
+        	</tr>	
+        </tbody>	
+    </table>
+  </div>
+    <div class="container" ng-controller="UController"> 
+    <h1>Users Calling from mongodb <h1>
+    <table  class="table" >
+      <thead>
+      <tr><th>Name</th><th>Email</th><th>Number</th><th>Action</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+             <td><input class="form-control" ng-model="user.name"></td>
+             <td><input class="form-control" ng-model="user.email"> </td>
+             <td><input class="form-control" ng-model="user.number"></td>
+             <td>
+              <button class="btn btn-primary" ng-click="addUser()">Add</button>
+              <button class="btn btn-info" ng-click="updateUser()"> Update &nbsp; </button>
+
+             </td> 
+           </tr>
+          <tr ng-repeat="u in ulist" >
+            <td>{{u.name}}</td><td>{{u.email}}</td><td>{{u.number}}</td>
+            <td>
+              <button class="btn btn-primary" ng-click="editUser(u._id)">Edit</button> 
+              <button class="btn btn-danger" ng-click="removeUser(u._id)">Remove</button>
+            </td>
+          </tr> 
+        </tbody>  
+    </table>
+  </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angular_material/0.11.2/angular-material.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
+    <script type="text/javascript" src="controllers/controller.js"></script> 
+</body> 
+
+</html>
